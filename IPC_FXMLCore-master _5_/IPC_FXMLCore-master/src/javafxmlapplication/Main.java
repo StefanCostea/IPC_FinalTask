@@ -21,9 +21,8 @@ public class Main extends Application {
         scene.getStylesheets().add(getClass().getResource("../css/styles.css").toExternalForm());
         scene.setFill(Color.TRANSPARENT);
         stage.setScene(scene);
-       // stage.initStyle(StageStyle.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.show();
-        MainpageController mainpage_controller = new MainpageController();
     }
 
     /**
