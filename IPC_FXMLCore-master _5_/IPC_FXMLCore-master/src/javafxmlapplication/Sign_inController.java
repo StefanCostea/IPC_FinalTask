@@ -11,10 +11,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
 
@@ -35,6 +40,7 @@ public class Sign_inController implements Initializable {
     private Text user_not_found;
 
     private Club club;
+    private model.Member current_user;
 
     /**
      * Initializes the controller class.
@@ -54,13 +60,24 @@ public class Sign_inController implements Initializable {
     }
 
     @FXML
-    private void OnSignInButtonPressed(ActionEvent event) {
+    private void OnSignInButtonPressed(ActionEvent event) throws IOException {
         boolean user_exists = club.existsLogin(user.getText());
         
         if (!user_exists) {
             user.textProperty().set("");
             password.textProperty().set("");
             user_not_found.setVisible(true);
+        }
+        
+        else {
+            current_user = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
+        
+        Parent root = FXMLLoader.load(getClass().getResource("Registration.fxml")); 
+        Scene scene = new Scene(root);
+        Node node = (Node)event.getSource();
+        Stage stage = (Stage)node.getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
         }
         
 
