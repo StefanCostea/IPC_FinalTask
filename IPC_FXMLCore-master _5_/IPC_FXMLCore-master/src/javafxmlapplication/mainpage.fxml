@@ -13,11 +13,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MainpageController">
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
-            <GridPane layoutX="6.0" prefHeight="730.0" prefWidth="711.0">
+            <GridPane fx:id="field_gridpane" layoutX="6.0" prefHeight="730.0" prefWidth="711.0">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -677,7 +677,7 @@
       </AnchorPane>
    </center>
    <right>
-      <TableView prefHeight="800.0" prefWidth="324.0" visible="false" BorderPane.alignment="CENTER">
+      <TableView fx:id="field_table_view" prefHeight="800.0" prefWidth="324.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
