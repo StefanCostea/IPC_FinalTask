@@ -82,7 +82,7 @@ public class Sign_upController implements Initializable {
                     .or(repeated_password.textProperty().length().isEqualTo(0)
                     .or(card_number.textProperty().length().isEqualTo(0)
                     .or(CVV.textProperty().length().isEqualTo(0)
-                    .or(password.textProperty().isEqualTo(repeated_password.textProperty()))
+                    .or(password.textProperty().isEqualTo(repeated_password.textProperty()).not())
 
                     )))))));
 

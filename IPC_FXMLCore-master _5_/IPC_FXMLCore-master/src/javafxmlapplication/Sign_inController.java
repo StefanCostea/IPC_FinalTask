@@ -72,15 +72,36 @@ public class Sign_inController implements Initializable {
         else {
             current_user = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
         
-        Parent root = FXMLLoader.load(getClass().getResource("Registration.fxml")); 
+        Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml")); 
         Scene scene = new Scene(root);
         Node node = (Node)event.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
         stage.setScene(scene);
         stage.show();
-        }
         
+        root = FXMLLoader.load(getClass().getResource("sign_in.fxml"));
+        scene = new Scene(root);
+        node = (Node)event.getSource();
+        stage = (Stage)node.getScene().getWindow();
+        stage.setScene(scene);
+        stage.close();
+        
+                root = FXMLLoader.load(getClass().getResource("sign_up.fxml"));
+                        scene = new Scene(root);
 
+        node = (Node)event.getSource();
+        stage = (Stage)node.getScene().getWindow();
+        stage.setScene(scene);
+        stage.close();
+                root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
+                        scene = new Scene(root);
+
+        node = (Node)event.getSource();
+        stage = (Stage)node.getScene().getWindow();
+        stage.setScene(scene);
+        stage.close();
+        
+        }
         
     }
     
