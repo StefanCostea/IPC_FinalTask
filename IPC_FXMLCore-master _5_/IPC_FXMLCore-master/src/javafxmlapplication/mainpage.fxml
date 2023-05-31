@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -13,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MainpageController">
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
@@ -712,6 +713,8 @@
             <Label layoutX="418.0" layoutY="37.0" text="Miercoles" />
             <Label layoutX="557.0" layoutY="37.0" text="Jueves" />
             <Label layoutX="705.0" layoutY="37.0" text="Viernes" />
+            <Label layoutX="824.0" layoutY="37.0" text="Select Week:" />
+            <DatePicker fx:id="date_picker" layoutX="916.0" layoutY="33.0" onAction="#date_selected" />
          </children>
       </Pane>
    </top>
