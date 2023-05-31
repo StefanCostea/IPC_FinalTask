@@ -7,9 +7,11 @@ package javafxmlapplication;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ObservableBooleanValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 
 /**
@@ -53,7 +56,9 @@ public class Sign_upController implements Initializable {
     private TextField card_number;
     @FXML
     private TextField CVV;
-    private Image image;
+    private Image image = null;
+    @FXML
+    private Button upload_button;
 
     /**
      * Initializes the controller class.
@@ -68,6 +73,7 @@ public class Sign_upController implements Initializable {
             Logger.getLogger(Sign_upController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
+        
         sign_up_button.disableProperty().bind(
                  name.textProperty().length().isEqualTo(0)
                     .or(surname.textProperty().length().isEqualTo(0)
@@ -76,6 +82,7 @@ public class Sign_upController implements Initializable {
                     .or(repeated_password.textProperty().length().isEqualTo(0)
                     .or(card_number.textProperty().length().isEqualTo(0)
                     .or(CVV.textProperty().length().isEqualTo(0)
+
                     )))))));
 
     }    
@@ -83,17 +90,20 @@ public class Sign_upController implements Initializable {
     @FXML
     private void OnSignInButtonPressed(ActionEvent event) throws ClubDAOException {
         club.registerMember(name.textProperty().getValue(), surname.textProperty().getValue(), telephon.textProperty().getValue(), username.textProperty().getValue(), password.textProperty().getValue(), card_number.textProperty().getValue(), Integer.parseInt(CVV.textProperty().getValue()), image);
+        for (Member member : club.getMembers()) {
+            System.out.print(member.getNickName());
+        }
     }
 
     @FXML
-    private void UploadFileButtonPressed(ActionEvent event) {
+    public void UploadFileButtonPressed(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.getExtensionFilters().add(new ExtensionFilter("Images", "*.jpg", "*.png"));
         File f = fc.showOpenDialog(null);
         
         if (f != null) {
-            image = new Image(f.getAbsolutePath());
+                String fileLocation = f.toURI().toString();
+                image = new Image(fileLocation);
+            }
         }
     }
-    
-}
