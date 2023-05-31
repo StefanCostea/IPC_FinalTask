@@ -36,3 +36,7 @@
     -fx-text-fill: white;
 }
 
+.registration_vbox{
+    -fx-background-color: #e8b79e;
+}
+
