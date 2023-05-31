@@ -41,7 +41,7 @@ public class RegistrationController implements Initializable {
         transition.play();
         transition.setOnFinished((e) ->{
             try{
-                fxml = FXMLLoader.load(getClass().getResource("sign_in.fxml"));
+                fxml = FXMLLoader.load(getClass().getResource("sign_up.fxml"));
                 vbox.getChildren().removeAll();
                 vbox.getChildren().setAll(fxml);
             }catch(IOException ex){
