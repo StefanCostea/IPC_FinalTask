@@ -82,9 +82,29 @@ public class Sign_upController implements Initializable {
                     .or(repeated_password.textProperty().length().isEqualTo(0)
                     .or(card_number.textProperty().length().isEqualTo(0)
                     .or(CVV.textProperty().length().isEqualTo(0)
+                    .or(password.textProperty().isEqualTo(repeated_password.textProperty()))
 
                     )))))));
 
+        password.textProperty().addListener(e->{
+            if(password.getText().equals(repeated_password.getText()) != true){
+                user_not_found.setText("Las contraseñas no son iguales");
+                user_not_found.setDisable(false);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setDisable(true);
+            }
+        });
+        
+        repeated_password.textProperty().addListener(e->{
+            if(password.getText().equals(repeated_password.getText()) != true){
+                user_not_found.setText("Las contraseñas no son iguales");
+                user_not_found.setDisable(false);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setDisable(true);
+            }
+        });
     }    
 
     @FXML

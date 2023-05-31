@@ -7,10 +7,9 @@
             <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/css/styles.css</file>
             <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/nbproject/build-impl.xml</file>
             <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/Main.java</file>
-            <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/mainpage.fxml</file>
+            <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/Sign_inController.java</file>
             <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/MainpageController.java</file>
-            <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/sign_in.fxml</file>
-            <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/sign_up.fxml</file>
+            <file>file:/home/stefancostea/Documents/IPC_FinalTask/IPC_FXMLCore-master%20_5_/IPC_FXMLCore-master/src/javafxmlapplication/Sign_upController.java</file>
         </group>
     </open-files>
 </project-private>
