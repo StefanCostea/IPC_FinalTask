@@ -10,15 +10,15 @@ import model.Member;
  * @author stefancostea
  */
 public class CurrentUser {
-    private Member current_user;
+    private static Member current_user;
 
     private CurrentUser() {}
     
-    public void setInstance(Member member){
+    public static void setInstance(Member member){
         current_user = member;
     }
     
-    public Member getInstace(){
+    public static Member getInstace(){
         return current_user;
     }
     
