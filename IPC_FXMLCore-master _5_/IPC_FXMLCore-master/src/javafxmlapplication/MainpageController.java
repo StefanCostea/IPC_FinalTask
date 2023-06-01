@@ -19,6 +19,8 @@ import javafx.scene.Node;
 import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
+
+import model.Member;
 /**
  * FXML Controller class
  *
@@ -27,8 +29,10 @@ import javafx.scene.control.DatePicker;
 public class MainpageController implements Initializable {
 
 
+    @FXML
     private GridPane field_gridpane;
-    private TableView<?> field_table_view;
+    @FXML
+    private TableView<Member> field_table_view;
     
     private ReadOnlyBooleanProperty hovered_field[][];
     @FXML
@@ -41,18 +45,18 @@ public class MainpageController implements Initializable {
     
     
     public MainpageController() {
+        hovered_field = new ReadOnlyBooleanProperty[5][13];
     }    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      /*  hovered_field = new ReadOnlyBooleanProperty[5][13];
         field_table_view.visibleProperty().bind(field_gridpane.hoverProperty());
         for(Node button : field_gridpane.getChildren()){
             if(button == null) continue;
             if(GridPane.getRowIndex(button) != null && GridPane.getColumnIndex(button) != null){
                 hovered_field[GridPane.getColumnIndex(button) -1 ][GridPane.getRowIndex(button) - 1] = button.hoverProperty();
             }
-        }*/
+        }
     }    
 
     @FXML
