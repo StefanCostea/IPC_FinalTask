@@ -66,12 +66,10 @@ public class MainpageController implements Initializable {
                 hovered_fields[GridPane.getColumnIndex(e)][GridPane.getRowIndex(e)] = true;
                 table_update();
                 field_table_view.setVisible(true);
-                System.out.println("SI");
             });
             e.setOnMouseExited(o->{
                 hovered_fields[GridPane.getColumnIndex(e)][GridPane.getRowIndex(e)] = false;
                 field_table_view.setVisible(false);
-                System.out.println("NO");
             });
         }
     }
@@ -107,7 +105,7 @@ public class MainpageController implements Initializable {
         
         Pair hovered_field = get_hovered_field();
         if(hovered_field == null) return null;
-        hours += (Integer)hovered_field.getKey();
+        hours += (Integer)hovered_field.getValue();
         day = (Integer)hovered_field.getKey();
         result = result.plusDays(day);
         return result.atTime(hours, 0);
@@ -116,7 +114,6 @@ public class MainpageController implements Initializable {
     private void table_update(){
         LocalDateTime time = get_selected_field_time();
         if(time == null) return;
-        System.out.println(time);
     }
     
 }
