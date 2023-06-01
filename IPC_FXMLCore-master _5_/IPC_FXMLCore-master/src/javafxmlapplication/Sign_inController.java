@@ -40,7 +40,6 @@ public class Sign_inController implements Initializable {
     private Text user_not_found;
 
     private Club club;
-    private model.Member current_user;
 
     /**
      * Initializes the controller class.
