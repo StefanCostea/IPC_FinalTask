@@ -51,7 +51,7 @@ public class MainpageController implements Initializable {
     
     
     public MainpageController() {
-        hovered_fields = new Boolean[5][13];
+        hovered_fields = new Boolean[5][14];
         for(int i = 0; i<hovered_fields.length; i++){
              for(int j = 0; j<hovered_fields[i].length; j++){
                  hovered_fields[i][j] = false;
@@ -63,13 +63,13 @@ public class MainpageController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         for(Node e : field_gridpane.getChildren()){
             e.setOnMouseEntered(o->{
-                hovered_fields[GridPane.getColumnIndex(e)-1][GridPane.getRowIndex(e)-1] = true;
+                hovered_fields[GridPane.getColumnIndex(e)][GridPane.getRowIndex(e)] = true;
                 table_update();
                 field_table_view.setVisible(true);
                 System.out.println("SI");
             });
             e.setOnMouseExited(o->{
-                hovered_fields[GridPane.getColumnIndex(e)-1][GridPane.getRowIndex(e)-1] = false;
+                hovered_fields[GridPane.getColumnIndex(e)][GridPane.getRowIndex(e)] = false;
                 field_table_view.setVisible(false);
                 System.out.println("NO");
             });
