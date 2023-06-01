@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Club;
 import model.ClubDAOException;
 import model.Member;
@@ -79,9 +80,12 @@ public class Sign_inController implements Initializable {
         Scene scene = new Scene(root);
         Node node = (Node)event.getSource();
         Stage stage = (Stage)node.getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
-        
+        Stage new_stage = new Stage();
+        new_stage.initStyle(StageStyle.UNIFIED);
+        new_stage.setScene(scene);
+        new_stage.show();
+        stage.close();
+
         
         }
         
