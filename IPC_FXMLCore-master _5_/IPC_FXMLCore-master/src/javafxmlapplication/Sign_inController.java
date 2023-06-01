@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.Club;
 import model.ClubDAOException;
+import model.Member;
 
 /**
  * FXML Controller class
@@ -71,7 +72,8 @@ public class Sign_inController implements Initializable {
         }
         
         else {
-//            Curre = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
+        Member current_user = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
+        CurrentUser.setInstance(current_user);
         
         Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml")); 
         Scene scene = new Scene(root);
