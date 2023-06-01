@@ -21,6 +21,7 @@ import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.util.Pair;
 
 import model.Member;
@@ -43,6 +44,9 @@ public class MainpageController implements Initializable {
     private Boolean hovered_fields[][];
     
     LocalDate monday_of_the_week;
+    
+    @FXML
+    private Label date_warning;
     
    
     /**
@@ -72,6 +76,7 @@ public class MainpageController implements Initializable {
                 field_table_view.setVisible(false);
             });
         }
+        date_warning.visibleProperty().bind(date_picker.valueProperty().isNull());
     }
 
     private Pair get_hovered_field(){
@@ -113,7 +118,9 @@ public class MainpageController implements Initializable {
     
     private void table_update(){
         LocalDateTime time = get_selected_field_time();
+        
         if(time == null) return;
+        System.out.println(time);
     }
     
 }

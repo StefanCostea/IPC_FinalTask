@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1114.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MainpageController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1248.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafxmlapplication.MainpageController">
    <center>
       <AnchorPane prefHeight="800.0" prefWidth="602.0" BorderPane.alignment="CENTER">
          <children>
@@ -678,10 +678,14 @@
       </AnchorPane>
    </center>
    <right>
-      <TableView fx:id="field_table_view" prefHeight="800.0" prefWidth="324.0" visible="false" BorderPane.alignment="CENTER">
+      <TableView fx:id="field_table_view" prefHeight="741.0" prefWidth="448.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
+          <TableColumn prefWidth="75.0" text="Campo 1" />
+          <TableColumn prefWidth="75.0" text="Campo 2" />
+            <TableColumn prefWidth="75.0" text="Campo 3" />
+            <TableColumn prefWidth="75.0" text="Campo 4" />
+            <TableColumn prefWidth="75.0" text="Campo 5" />
+            <TableColumn prefWidth="75.0" text="Campo 6" />
         </columns>
       </TableView>
    </right>
@@ -713,9 +717,9 @@
             <Label layoutX="418.0" layoutY="37.0" text="Miercoles" />
             <Label layoutX="557.0" layoutY="37.0" text="Jueves" />
             <Label layoutX="705.0" layoutY="37.0" text="Viernes" />
-            <Label layoutX="825.0" layoutY="37.0" text="Select Week:" />
+            <Label layoutX="780.0" layoutY="37.0" text="Seleccionar semana:" />
             <DatePicker fx:id="date_picker" layoutX="916.0" layoutY="33.0" onAction="#date_selected" />
-            <Label layoutX="916.0" layoutY="14.0" text="Seleccionar fecha primero" textFill="RED" visible="false" />
+            <Label fx:id="date_warning" layoutX="916.0" layoutY="14.0" text="Seleccionar fecha primero" textFill="RED" visible="false" />
          </children>
       </Pane>
    </top>
