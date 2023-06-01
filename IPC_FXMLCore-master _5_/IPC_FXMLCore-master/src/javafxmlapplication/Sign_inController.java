@@ -85,8 +85,6 @@ public class Sign_inController implements Initializable {
         new_stage.setScene(scene);
         new_stage.show();
         stage.close();
-
-        
         }
         
     }

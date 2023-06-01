@@ -38,6 +38,8 @@ public class MainpageController implements Initializable {
     @FXML
     private DatePicker date_picker;
     
+    LocalDate monday_of_the_week;
+    
    
     /**
      * Initializes the controller class.
@@ -61,7 +63,8 @@ public class MainpageController implements Initializable {
 
     @FXML
     private void date_selected(ActionEvent event) {
-
+        LocalDate selectedDate = date_picker.getValue();
+        monday_of_the_week = selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
     }
     
 }
