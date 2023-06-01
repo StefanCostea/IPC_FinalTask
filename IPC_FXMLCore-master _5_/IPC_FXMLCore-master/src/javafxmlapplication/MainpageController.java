@@ -34,14 +34,7 @@ public class MainpageController implements Initializable {
     @FXML
     private DatePicker date_picker;
     
-    private LocalDate week;
-    
-    enum Mode{
-        Booking,
-        Cancelling
-    }
-    
-    Mode selection_mode = Mode.Booking;
+   
     /**
      * Initializes the controller class.
      */
@@ -52,20 +45,19 @@ public class MainpageController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        hovered_field = new ReadOnlyBooleanProperty[5][13];
+      /*  hovered_field = new ReadOnlyBooleanProperty[5][13];
         field_table_view.visibleProperty().bind(field_gridpane.hoverProperty());
         for(Node button : field_gridpane.getChildren()){
             if(button == null) continue;
             if(GridPane.getRowIndex(button) != null && GridPane.getColumnIndex(button) != null){
                 hovered_field[GridPane.getColumnIndex(button) -1 ][GridPane.getRowIndex(button) - 1] = button.hoverProperty();
             }
-        }
+        }*/
     }    
 
     @FXML
     private void date_selected(ActionEvent event) {
-        LocalDate selectedDate = date_picker.getValue();
-        week = selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
+
     }
     
 }

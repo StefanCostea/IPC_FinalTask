@@ -79,27 +79,6 @@ public class Sign_inController implements Initializable {
         stage.setScene(scene);
         stage.show();
         
-        root = FXMLLoader.load(getClass().getResource("sign_in.fxml"));
-        scene = new Scene(root);
-        node = (Node)event.getSource();
-        stage = (Stage)node.getScene().getWindow();
-        stage.setScene(scene);
-        stage.close();
-        
-                root = FXMLLoader.load(getClass().getResource("sign_up.fxml"));
-                        scene = new Scene(root);
-
-        node = (Node)event.getSource();
-        stage = (Stage)node.getScene().getWindow();
-        stage.setScene(scene);
-        stage.close();
-                root = FXMLLoader.load(getClass().getResource("Registration.fxml"));
-                        scene = new Scene(root);
-
-        node = (Node)event.getSource();
-        stage = (Stage)node.getScene().getWindow();
-        stage.setScene(scene);
-        stage.close();
         
         }
         

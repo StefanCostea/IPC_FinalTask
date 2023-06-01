@@ -713,7 +713,7 @@
             <Label layoutX="418.0" layoutY="37.0" text="Miercoles" />
             <Label layoutX="557.0" layoutY="37.0" text="Jueves" />
             <Label layoutX="705.0" layoutY="37.0" text="Viernes" />
-            <Label layoutX="824.0" layoutY="37.0" text="Select Week:" />
+            <Label layoutX="825.0" layoutY="37.0" text="Select Week:" />
             <DatePicker fx:id="date_picker" layoutX="916.0" layoutY="33.0" onAction="#date_selected" />
          </children>
       </Pane>
