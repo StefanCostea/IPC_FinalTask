@@ -4,10 +4,10 @@
  */
 package javafxmlapplication;
 
-import com.sun.javafx.geom.Vec2d;
 import java.net.URL;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -21,6 +21,7 @@ import javafx.beans.property.ReadOnlyBooleanProperty;
 import javafx.beans.property.BooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.scene.control.DatePicker;
+import javafx.util.Pair;
 
 import model.Member;
 /**
@@ -39,7 +40,7 @@ public class MainpageController implements Initializable {
     @FXML
     private DatePicker date_picker;
     
-    private boolean hovered_fields[][];
+    private Boolean hovered_fields[][];
     
     LocalDate monday_of_the_week;
     
@@ -50,26 +51,37 @@ public class MainpageController implements Initializable {
     
     
     public MainpageController() {
-        hovered_fields = new boolean[5][13];
+        hovered_fields = new Boolean[5][13];
+        for(int i = 0; i<hovered_fields.length; i++){
+             for(int j = 0; j<hovered_fields[i].length; j++){
+                 hovered_fields[i][j] = false;
+             }
+        }
     }    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        field_table_view.visibleProperty().bind(field_gridpane.hoverProperty());
-        field_table_view.visibleProperty().addListener(e->{
-            table_update();
-        });
         for(Node e : field_gridpane.getChildren()){
-            e.hoverProperty().addListener(o->{
-                hovered_fields[GridPane.getColumnIndex(e)-1][GridPane.getRowIndex(e)-1] = e.hoverProperty().get();
+            e.setOnMouseEntered(o->{
+                hovered_fields[GridPane.getColumnIndex(e)-1][GridPane.getRowIndex(e)-1] = true;
+                table_update();
+                field_table_view.setVisible(true);
+                System.out.println("SI");
+            });
+            e.setOnMouseExited(o->{
+                hovered_fields[GridPane.getColumnIndex(e)-1][GridPane.getRowIndex(e)-1] = false;
+                field_table_view.setVisible(false);
+                System.out.println("NO");
             });
         }
     }
 
-    private Vec2d get_hovered_field(){
+    private Pair get_hovered_field(){
         for(int i = 0; i<hovered_fields.length; i++){
-            for(int j = 0; j<hovered_fields.length;j++){
-                if(hovered_fields[i][j]) return new Vec2d(i,j);
+            for(int j = 0; j<hovered_fields[i].length;j++){
+                if(hovered_fields[i][j] == true){
+                    return new Pair(i,j);
+                }
             }
         }
         return null;
@@ -81,7 +93,7 @@ public class MainpageController implements Initializable {
         monday_of_the_week = selectedDate.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY));
     }
     
-    private LocalDate get_selected_field_time(){
+    private LocalDateTime get_selected_field_time(){
         int hours = 9;
         int day = 0;
         LocalDate result;
@@ -93,17 +105,16 @@ public class MainpageController implements Initializable {
                                    .withMonth(monday_of_the_week.getMonthValue())
                                    .withDayOfMonth(monday_of_the_week.getDayOfMonth());
         
-        Vec2d hovered_field = get_hovered_field();
+        Pair hovered_field = get_hovered_field();
         if(hovered_field == null) return null;
-        hours += hovered_field.y;
-        day = (int)hovered_field.x;
-        result.plusDays(day);
-        result.atTime(hours, 0);
-        return result;
+        hours += (Integer)hovered_field.getKey();
+        day = (Integer)hovered_field.getKey();
+        result = result.plusDays(day);
+        return result.atTime(hours, 0);
     }
     
     private void table_update(){
-        LocalDate time = get_selected_field_time();
+        LocalDateTime time = get_selected_field_time();
         if(time == null) return;
         System.out.println(time);
     }
