@@ -73,7 +73,7 @@ public class EditUserController implements Initializable {
             Logger.getLogger(EditUserController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        
+        user_not_found.setVisible(false);
         sign_up_button.disableProperty().bind(
                  name.textProperty().length().isEqualTo(0)
                     .or(surname.textProperty().length().isEqualTo(0)
@@ -88,16 +88,54 @@ public class EditUserController implements Initializable {
         password.textProperty().addListener(e->{
             if(password.getText().equals(repeated_password.getText()) != true){
                 user_not_found.setText("Las contraseñas no son iguales");
-                user_not_found.setDisable(false);
+                user_not_found.setVisible(true);
             }else{
                 user_not_found.setText("El usuario o la contraseña no son correctos");
-                user_not_found.setDisable(true);
+                user_not_found.setVisible(false);
             }
         });
         
         repeated_password.textProperty().addListener(e->{
             if(password.getText().equals(repeated_password.getText()) != true){
                 user_not_found.setText("Las contraseñas no son iguales");
+                user_not_found.setVisible(true);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setVisible(false);
+            }
+        });
+        
+        card_number.textProperty().addListener(e->{
+            boolean is_number;
+            try {
+                Integer.parseInt(card_number.getText());
+                is_number = true;
+            } catch(Exception exc) {
+                is_number = false;
+            }
+            
+            
+            if(is_number == false){
+                user_not_found.setText("La tarjeta y el CVV no pueden contener letras.");
+                user_not_found.setVisible(true);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setVisible(false);
+            }
+        });
+            
+            CVV.textProperty().addListener(e->{
+            boolean is_number;
+            try {
+                Integer.parseInt(card_number.getText());
+                is_number = true;
+            } catch(Exception exc) {
+                is_number = false;
+            }
+            
+            
+            if(is_number == false){
+                user_not_found.setText("La tarjeta y el CVV no pueden contener letras.");
                 user_not_found.setDisable(false);
             }else{
                 user_not_found.setText("El usuario o la contraseña no son correctos");

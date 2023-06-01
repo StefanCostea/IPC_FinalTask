@@ -72,7 +72,7 @@ public class Sign_upController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(Sign_upController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        user_not_found.setVisible(false);
         
         sign_up_button.disableProperty().bind(
                  name.textProperty().length().isEqualTo(0)
@@ -80,25 +80,60 @@ public class Sign_upController implements Initializable {
                     .or(telephon.textProperty().length().isEqualTo(0)
                     .or(username.textProperty().length().isEqualTo(0)
                     .or(repeated_password.textProperty().length().isEqualTo(0)
-                    .or(card_number.textProperty().length().isEqualTo(0)
-                    .or(CVV.textProperty().length().isEqualTo(0)
                     .or(password.textProperty().isEqualTo(repeated_password.textProperty()).not())
-
-                    )))))));
+                    )))));
 
         password.textProperty().addListener(e->{
             if(password.getText().equals(repeated_password.getText()) != true){
                 user_not_found.setText("Las contraseñas no son iguales");
-                user_not_found.setDisable(false);
+                user_not_found.setVisible(true);
             }else{
                 user_not_found.setText("El usuario o la contraseña no son correctos");
-                user_not_found.setDisable(true);
+                user_not_found.setVisible(false);
             }
         });
         
         repeated_password.textProperty().addListener(e->{
             if(password.getText().equals(repeated_password.getText()) != true){
                 user_not_found.setText("Las contraseñas no son iguales");
+                user_not_found.setVisible(true);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setVisible(false);
+            }
+        });
+        
+        card_number.textProperty().addListener(e->{
+            boolean is_number;
+            try {
+                Integer.parseInt(card_number.getText());
+                is_number = true;
+            } catch(Exception exc) {
+                is_number = false;
+            }
+            
+            
+            if(is_number == false){
+                user_not_found.setText("La tarjeta y el CVV no pueden contener letras.");
+                user_not_found.setVisible(true);
+            }else{
+                user_not_found.setText("El usuario o la contraseña no son correctos");
+                user_not_found.setVisible(false);
+            }
+        });
+            
+            CVV.textProperty().addListener(e->{
+            boolean is_number;
+            try {
+                Integer.parseInt(card_number.getText());
+                is_number = true;
+            } catch(Exception exc) {
+                is_number = false;
+            }
+            
+            
+            if(is_number == false){
+                user_not_found.setText("La tarjeta y el CVV no pueden contener letras.");
                 user_not_found.setDisable(false);
             }else{
                 user_not_found.setText("El usuario o la contraseña no son correctos");
@@ -109,6 +144,14 @@ public class Sign_upController implements Initializable {
 
     @FXML
     private void OnSignInButtonPressed(ActionEvent event) throws ClubDAOException {
+        if (club.existsLogin(username.getText())) {
+                user_not_found.setText("El usuario elegido ya existe");
+                user_not_found.setDisable(false);
+                
+                username.setText("");
+                return;
+        }
+        
         club.registerMember(name.textProperty().getValue(), surname.textProperty().getValue(), telephon.textProperty().getValue(), username.textProperty().getValue(), password.textProperty().getValue(), card_number.textProperty().getValue(), Integer.parseInt(CVV.textProperty().getValue()), image);
         for (Member member : club.getMembers()) {
             System.out.print(member.getNickName());

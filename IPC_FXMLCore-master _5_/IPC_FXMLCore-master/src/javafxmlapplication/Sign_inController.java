@@ -40,12 +40,14 @@ public class Sign_inController implements Initializable {
     private Text user_not_found;
 
     private Club club;
+    private  CurrentUser current_user;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
         sign_up_button.disableProperty().bind(user.textProperty().length().isEqualTo(0).or(password.textProperty().length().isEqualTo(0)));
         user_not_found.setVisible(false);
         
@@ -69,7 +71,7 @@ public class Sign_inController implements Initializable {
         }
         
         else {
-            current_user = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
+//            Curre = club.getMemberByCredentials(user.textProperty().getValue(), password.textProperty().getValue());
         
         Parent root = FXMLLoader.load(getClass().getResource("mainpage.fxml")); 
         Scene scene = new Scene(root);
